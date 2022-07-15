@@ -1,5 +1,5 @@
-[![NPM](https://nodei.co/npm/@thatiemsz/text2png.png)](https://nodei.co/npm/@thatiemsz/text2png/)
-[![npm version](https://badge.fury.io/js/@thatiemsz/text2png.svg)](https://badge.fury.io/js/@thatiemsz/text2png)
+[![NPM](https://nodei.co/npm/@thatiemsz/text2png.png)](https://nodei.co/npm/@thatiemsz/text2png)
+[![npm version](https://badge.fury.io/js/@thatiemsz%2Ftext2png.svg)](https://badge.fury.io/js/@thatiemsz%2Ftext2png)
 
 # text2png: text-to-png generator for Node.js
 
