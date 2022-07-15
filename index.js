@@ -1,4 +1,5 @@
-const { registerFont, createCanvas } = require("canvas");
+const { Readable } = require("stream");
+const { GlobalFonts, createCanvas } = require("@napi-rs/canvas");
 
 /**
  * Convert text to PNG image.
@@ -33,11 +34,11 @@ const text2png = (text, options = {}) => {
 
   // Register a custom font
   if (options.localFontPath && options.localFontName) {
-    registerFont(options.localFontPath, { family: options.localFontName });
+    GlobalFonts.registerFromPath(options.localFontPath, options.localFontName)
   }
 
-  const canvas = createCanvas(0, 0);
-  const ctx = canvas.getContext("2d");
+  let canvas = createCanvas(1, 1);
+  let ctx = canvas.getContext("2d");
 
   const max = {
     left: 0,
@@ -86,6 +87,9 @@ const text2png = (text, options = {}) => {
     options.borderBottomWidth +
     options.paddingTop +
     options.paddingBottom;
+
+  canvas = createCanvas(canvas.width, canvas.height);
+  ctx = canvas.getContext("2d");
 
   const hasBorder =
     false ||
@@ -163,7 +167,7 @@ const text2png = (text, options = {}) => {
     case "buffer":
       return canvas.toBuffer();
     case "stream":
-      return canvas.createPNGStream();
+      return Readable.from(canvas.toBuffer().toString());
     case "dataURL":
       return canvas.toDataURL("image/png");
     case "canvas":
@@ -212,3 +216,4 @@ function or() {
 }
 
 module.exports = text2png;
+module.exports.text2png = text2png;

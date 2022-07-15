@@ -1,6 +1,5 @@
-[![NPM](https://nodei.co/npm/text2png.png)](https://nodei.co/npm/text2png/)
-[![npm version](https://badge.fury.io/js/text2png.svg)](https://badge.fury.io/js/text2png)
-[![Build Status](https://travis-ci.org/tkrkt/text2png.svg?branch=master)](https://travis-ci.org/tkrkt/text2png)
+[![NPM](https://nodei.co/npm/@thatiemsz/text2png.png)](https://nodei.co/npm/@thatiemsz/text2png/)
+[![npm version](https://badge.fury.io/js/@thatiemsz/text2png.svg)](https://badge.fury.io/js/@thatiemsz/text2png)
 
 # text2png: text-to-png generator for Node.js
 
@@ -12,17 +11,16 @@ text2png('Create png image\nfrom multi-line text!');
 
 ## Quick start
 
-text2png depends on [node-canvas](https://github.com/Automattic/node-canvas).
-See [node-canvas wiki](https://github.com/Automattic/node-canvas/wiki) on installing node-canvas.
+text2png depends on [@napi-rs/canvas](https://github.com/Brooooooklyn/canvas).
 
 ```
-$ npm install text2png
+$ npm install @thatiemsz/text2png
 ```
 
 ```js
-var fs = require('fs');
-var text2png = require('text2png');
-fs.writeFileSync('out.png', text2png('Hello!', {color: 'blue'}));
+const { writeFile } = require('fs/promises');
+const text2png = require('@thatiemsz/text2png');
+await writeFile('out.png', text2png('Hello!', { color: 'blue' }));
 ```
 
 ## Option
@@ -54,7 +52,7 @@ fs.writeFileSync('out.png', text2png('Hello!', {color: 'blue'}));
 
 ``option.strokeWidth = 1 | 2 | ... `` A padding may have to be set to avoid cutoff of stroke
 
-``'canvas'`` returns [node-canvas](https://github.com/Automattic/node-canvas) object.
+``'canvas'`` returns [canvas](https://github.com/Brooooooklyn/canvas) object.
 
 If you want to use any custom fonts without installing, use `localFontPath` and `localFontName` property.
 
@@ -69,7 +67,7 @@ text2png('with custom fonts', {
 ## Command line interface
 
 ```
-$ npm install -g text2png
+$ npm install -g @thatiemsz/text2png
 $ text2png --help
 $ text2png -t "Hello!" -o "output.png"
 ```
